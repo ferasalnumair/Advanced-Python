@@ -1,0 +1,13 @@
+import pandas as pd
+import numpy as np
+data = {
+    "product": ["Widget A", "Widget B", "Widget C"],
+    "price": ["$1,234.50", "$567.89", "$2,345.00"],
+    "quantity": [10, 5, None]
+}
+df = pd.DataFrame(data)
+df["price"] = df["price"].apply(lambda x: float(x.replace("$", "").replace(",", "")))
+df["quantity"] = df["quantity"].fillna(0)
+df["total"] = df.apply(lambda row: row["price"] * row["quantity"], axis=1)
+df["price_category"] = df["price"].apply(lambda x: "low" if x < 600 else ("med" if x <= 1500 else "high"))
+print(df)
