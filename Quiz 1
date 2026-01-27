@@ -1,0 +1,5 @@
+def pul_11(*num):
+    def divide_numbers(numbers):
+        return sum(numbers) / len(numbers)
+    print(divide_numbers(num))
+pul_11(1, 2, 3, 4, 5)
