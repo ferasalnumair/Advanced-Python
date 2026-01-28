@@ -1,0 +1,48 @@
+students = {
+    "S001": {
+        "name": "Alice Chen",
+        "courses": {
+            "CS101": {"grade": 92, "credits": 3},
+            "MATH201": {"grade": 88, "credits": 4},
+            "AI301": {"grade": 95, "credits": 3}
+        }
+    },
+    "S002": {
+        "name": "Bob Lee",
+        "courses": {
+            "CS101": {"grade": 85, "credits": 3},
+            "MATH201": {"grade": 78, "credits": 4},
+            "AI301": {"grade": 80, "credits": 3}
+        }
+    }
+}
+print(students["S001"]["courses"]["AI301"]["grade"] / 20)
+t = 0
+c = 0
+for x in students["S002"]["courses"].values():
+    t += (x["grade"] / 20) * x["credits"]
+    c += x["credits"]
+print(t / c)
+for s in students.values():
+    if "CS101" in s["courses"]:
+        print(s["name"])
+total = 0
+count = 0
+for s in students.values():
+    for x in s["courses"].values():
+        total += x["grade"] / 20
+        count += 1
+print(total / count)
+best = ""
+best_gpa = 0
+for s in students.values():
+    t = 0
+    c = 0
+    for x in s["courses"].values():
+        t += (x["grade"] / 20) * x["credits"]
+        c += x["credits"]
+    gpa = t / c
+    if gpa > best_gpa:
+        best_gpa = gpa
+        best = s["name"]
+print(best, best_gpa)
